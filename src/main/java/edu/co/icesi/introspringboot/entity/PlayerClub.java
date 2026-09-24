@@ -39,21 +39,16 @@ public class PlayerClub {
     }
 
     // Estudio: Crea la etapa y construye su clave con los IDs del jugador y club, más la fecha de inicio.
-    public PlayerClub(Player player, Club club,
-                  LocalDate startDate, LocalDate endDate) {
-    this.player = player;
-    this.club = club;
-    this.endDate = endDate;
+    public PlayerClub(Player player, Club club, LocalDate startDate, LocalDate endDate) {
+        this.player = player;
+        this.club = club;
+        this.endDate = endDate;
 
-    // Estudio: La fecha se guarda dentro de la clave; no necesita otro campo startDate en esta entidad.
-    this.id = new PlayerClubId(
-        player.getId(),
-        club.getId(),
-        startDate
-    );
-}
+        // Estudio: La fecha se guarda dentro de la clave; no necesita otro campo startDate en esta entidad.
+        this.id = new PlayerClubId(player.getId(), club.getId(), startDate);
+    }
 
-    
+
 
     // Estudio: Devuelve el objeto con los tres componentes de la clave.
     public PlayerClubId getId() {
@@ -87,19 +82,19 @@ public class PlayerClub {
 
     // Estudio: Lee la fecha desde id; si aún no existe la clave, devuelve null.
     public LocalDate getStartDate() {
-    if (id == null) {
-        return null;
+        if (id == null) {
+            return null;
+        }
+        return id.getStartDate();
     }
-    return id.getStartDate();
-}
 
     // Estudio: Asigna la fecha dentro de id; crea la clave si falta. No cambiar una PK ya persistida.
     public void setStartDate(LocalDate startDate) {
-    if (id == null) {
-        id = new PlayerClubId();
+        if (id == null) {
+            id = new PlayerClubId();
+        }
+        id.setStartDate(startDate);
     }
-    id.setStartDate(startDate);
-}
 
     // Estudio: Devuelve la fecha de fin.
     public LocalDate getEndDate() {

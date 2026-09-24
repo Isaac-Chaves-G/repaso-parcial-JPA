@@ -2,7 +2,6 @@ package edu.co.icesi.introspringboot.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Table;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -11,6 +10,8 @@ import java.time.LocalDate;
 // Estudio: Agrupa la clave (jugador, club, inicio). Sus columnas están en PLAYER_CLUB; no crea otra tabla.
 @Embeddable
 public class PlayerClubId implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     // Estudio: Relaciona este atributo con la columna SQL player_id.
     @Column(name = "player_id")
@@ -29,12 +30,11 @@ public class PlayerClubId implements Serializable {
     }
 
     // Estudio: Recibe las tres piezas que juntas identifican una etapa; this.campo es el atributo del objeto.
-    public PlayerClubId(Integer playerId, Integer clubId,
-                    LocalDate startDate) {
-    this.playerId = playerId;
-    this.clubId = clubId;
-    this.startDate = startDate;
-}
+    public PlayerClubId(Integer playerId, Integer clubId, LocalDate startDate) {
+        this.playerId = playerId;
+        this.clubId = clubId;
+        this.startDate = startDate;
+    }
 
     // Estudio: Devuelve el ID del jugador dentro de la clave.
     public Integer getPlayerId() {
@@ -58,8 +58,8 @@ public class PlayerClubId implements Serializable {
 
     // Estudio: Devuelve la fecha de inicio.
     public LocalDate getStartDate() {
-    return startDate;
-}
+        return startDate;
+    }
 
     // Estudio: Asigna la fecha de inicio al construir la clave; no modificar componentes de una PK ya persistida.
     public void setStartDate(LocalDate startDate) {
@@ -73,13 +73,13 @@ public class PlayerClubId implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         PlayerClubId that = (PlayerClubId) o;
         return Objects.equals(playerId, that.playerId)
-    && Objects.equals(clubId, that.clubId)
-    && Objects.equals(startDate, that.startDate);
+                && Objects.equals(clubId, that.clubId)
+                && Objects.equals(startDate, that.startDate);
     }
 
     @Override
     // Estudio: Código auxiliar para mapas y conjuntos; usar los componentes de la clave, incluida startDate.
     public int hashCode() {
-        return Objects.hash(playerId, clubId);
+        return Objects.hash(playerId, clubId, startDate);
     }
 }

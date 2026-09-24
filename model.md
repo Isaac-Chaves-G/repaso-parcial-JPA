@@ -1,4 +1,4 @@
-El modelo es
+Modelo corregido según el diagrama del parcial. PLAYER_CLUB se identifica con jugador + club + fecha de inicio; no tiene un id numérico independiente. MATCH se mapea en Java a la tabla match_game.
 
 ```mermaid
 erDiagram
@@ -36,10 +36,9 @@ erDiagram
     }
 
     PLAYER_CLUB {
-        int id PK
-        int player_id FK
-        int club_id FK
-        date start_date
+        int player_id PK, FK
+        int club_id PK, FK
+        date start_date PK
         date end_date
     }
 

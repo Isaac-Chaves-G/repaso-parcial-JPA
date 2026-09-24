@@ -3,7 +3,6 @@ package edu.co.icesi.introspringboot.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 // Estudio: JPA gestiona esta clase como entidad; @Table indica la tabla donde se guardan sus datos.
 @Entity
@@ -25,7 +24,7 @@ public class Match {
     @JoinColumn(name = "home_country_id")
     private Country homeCountry;
 
-    // se modifica porque  el diagrama indica un pais visitante por partido     
+    // se modifica porque  el diagrama indica un pais visitante por partido
     // Estudio: Muchos registros de Match pueden compartir un mismo awayCountry; aquí se guarda un objeto.
     @ManyToOne
     // Estudio: name es la columna SQL que guarda la FK; no es el nombre del atributo Java.
@@ -61,15 +60,15 @@ public class Match {
     // Estudio: Asigna el país local al objeto; por sí solo no ejecuta un UPDATE inmediato.
     public void setHomeCountry(Country homeCountry) { this.homeCountry = homeCountry; }
 
-// Estudio: Devuelve el país visitante (un objeto, no una lista).
-public Country getAwayCountry() {
-    return awayCountry;
-}
+    // Estudio: Devuelve el país visitante (un objeto, no una lista).
+    public Country getAwayCountry() {
+        return awayCountry;
+    }
 
-// Estudio: Asigna el país visitante (un objeto, no una lista) al objeto; por sí solo no ejecuta un UPDATE inmediato.
-public void setAwayCountry(Country awayCountry) {
-    this.awayCountry = awayCountry;
-}
+    // Estudio: Asigna el país visitante (un objeto, no una lista) al objeto; por sí solo no ejecuta un UPDATE inmediato.
+    public void setAwayCountry(Country awayCountry) {
+        this.awayCountry = awayCountry;
+    }
     // Estudio: Devuelve el estadio.
     public String getStadium() { return stadium; }
     // Estudio: Asigna el estadio al objeto; por sí solo no ejecuta un UPDATE inmediato.

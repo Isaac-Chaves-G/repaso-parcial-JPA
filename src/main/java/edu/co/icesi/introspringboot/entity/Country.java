@@ -83,8 +83,8 @@ public class Country {
     public List<Match> getAwayMatches() { return awayMatches; }
     // Estudio: Asigna la lista de partidos donde este país es visitante al objeto; por sí solo no ejecuta un UPDATE inmediato.
     public void setAwayMatches(List<Match> awayMatches) {
-    this.awayMatches = awayMatches;
-}
+        this.awayMatches = awayMatches;
+    }
 
     // Estudio: Devuelve la lista de jugadores del país.
     public List<Player> getPlayers() { return players; }

@@ -8,7 +8,7 @@ import java.util.List;
 
 
 // Estudio: JPA gestiona esta clase como entidad; @Table indica la tabla donde se guardan sus datos.
-@Entity //SE AGREGA LA ETIQUETA ENTITY PORQUE ANTES NO LA TENIA Y ASI JPA LA RECONOCE COMO ENTIDAD 
+@Entity //SE AGREGA LA ETIQUETA ENTITY PORQUE ANTES NO LA TENIA Y ASI JPA LA RECONOCE COMO ENTIDAD
 @Table(name = "player")
 public class Player {
 
@@ -41,10 +41,10 @@ public class Player {
     @OneToMany(mappedBy = "player")
     private List<PlayerClub> playerClubs;
 
-    //Constructor vacio agregado porque JPA necesita un constructor sin parametros para crear los objetos al recuperar datos 
+    //Constructor vacio agregado porque JPA necesita un constructor sin parametros para crear los objetos al recuperar datos
     // Estudio: Constructor vacío: JPA puede crear el objeto y después cargar sus campos.
     public Player() {
-}
+    }
 
     // Estudio: Constructor con datos: cada this.campo = parámetro asigna un valor inicial al objeto.
     public Player(String name, LocalDate birthDate, String position, Integer fifaScore, Country country) {
@@ -57,8 +57,14 @@ public class Player {
 
     // Estudio: Devuelve el identificador.
     public Integer getId() {
-    return id;
-}
+        return id;
+    }
+    // Los getters permiten que la respuesta JSON muestre estos datos; no son constructores.
+    public String getName() { return name; }
+    public LocalDate getBirthDate() { return birthDate; }
+    public String getPosition() { return position; }
+    public Integer getFifaScore() { return fifaScore; }
+    public Country getCountry() { return country; }
 
 
 }

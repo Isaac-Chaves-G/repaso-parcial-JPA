@@ -9,12 +9,8 @@ import java.util.List;
 @Repository
 public interface CountryRepository extends CrudRepository<Country, Integer> {
 
-    /**
-     * Top 10 de países con mejores jugadores acorde al score del jugador.
-     * Navegación: Country -> players -> fifaScore
-     * Se usa Distinct para no repetir el país si tiene varios jugadores en el top.
-     * Se usa Top10 para limitar el resultado.
-     */
-    // 5
+    // Ejemplo original de la plantilla; no corresponde a las cinco consultas del examen.
+    // Ordena por el score de jugadores relacionados y limita filas: NO calcula un promedio por país.
+    // Un ranking agregado por país requiere definir primero qué medida se quiere comparar.
     List<Country> findTop10ByOrderByPlayers_FifaScoreDesc();
 }

@@ -5,6 +5,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 public class ServletInitializer extends SpringBootServletInitializer {
 
+    // Permite desplegar el WAR en un servidor externo e indica qué aplicación debe arrancar.
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(IntroSpringBootApplication.class);
